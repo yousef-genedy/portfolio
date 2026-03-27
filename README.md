@@ -93,8 +93,3 @@ netlify init
 netlify deploy --build
 netlify deploy --prod --build
 ```
-
-## Notes
-
-- `app/icon.svg` is used as a favicon placeholder.
-- Replace `https://example.netlify.app` defaults in metadata by setting `NEXT_PUBLIC_SITE_URL` in production.
