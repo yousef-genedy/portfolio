@@ -14,7 +14,7 @@ export default function OssPage() {
 
   return (
     <Container>
-      <div className="space-y-10 py-14 md:py-20">
+      <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader
           title="OSS Contributions"
           description="Work across Joplin and community contributions with an emphasis on practical impact."

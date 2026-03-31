@@ -56,7 +56,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
   return (
     <Container>
-      <div className="space-y-10 py-14 md:py-20">
+      <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader title={project.title} description={project.summary} />
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import ExperienceItem from "@/components/ExperienceItem";
 import PageHeader from "@/components/PageHeader";
-import { getExperienceEntries } from "@/lib/content/queries";
+import ExperienceSection from "@/components/experience/ExperienceSection";
+import { experienceItems } from "@/data/experience";
 
 export const metadata: Metadata = {
   title: "Experience",
@@ -10,20 +10,14 @@ export const metadata: Metadata = {
 };
 
 export default function ExperiencePage() {
-  const entries = getExperienceEntries();
-
   return (
     <Container>
-      <div className="space-y-10 py-14 md:py-20">
+      <div className="space-y-12 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader
           title="Experience"
-          description="Selected roles and responsibilities centered around scalable backend systems."
+          description="A summary of my professional experience and work journey."
         />
-        <div className="space-y-4">
-          {entries.map((item) => (
-            <ExperienceItem key={item.slug} item={item} />
-          ))}
-        </div>
+        <ExperienceSection items={experienceItems} />
       </div>
     </Container>
   );

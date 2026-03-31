@@ -89,6 +89,18 @@ body::-webkit-scrollbar-thumb:hover {
   animation: dot-pulse 2.4s ease-in-out infinite;
 }
 
+.timeline-node {
+  transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.experience-card {
+  transition: transform 260ms ease, border-color 260ms ease, background-color 260ms ease;
+}
+
+.experience-card:hover {
+  box-shadow: 0 12px 28px -22px rgba(56, 189, 248, 0.45);
+}
+
 @keyframes reveal-up {
   from {
     opacity: 0;
@@ -114,6 +126,11 @@ body::-webkit-scrollbar-thumb:hover {
   .reveal-enter,
   .dot-pulse {
     animation: none;
+  }
+
+  .timeline-node,
+  .experience-card {
+    transition: none;
   }
 }
 

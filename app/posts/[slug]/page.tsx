@@ -56,7 +56,7 @@ export default async function PostDetailPage({ params }: PostPageProps) {
 
   return (
     <Container>
-      <div className="space-y-10 py-14 md:py-20">
+      <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader title={post.title} description={post.summary} />
         <MdxArticle>{body}</MdxArticle>
       </div>
