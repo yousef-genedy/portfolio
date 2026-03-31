@@ -16,7 +16,6 @@ export default function ExperiencePage() {
     <Container>
       <div className="space-y-10 py-14 md:py-20">
         <PageHeader
-          eyebrow="Work"
           title="Experience"
           description="Selected roles and responsibilities centered around scalable backend systems."
         />
@@ -29,4 +28,3 @@ export default function ExperiencePage() {
     </Container>
   );
 }
-

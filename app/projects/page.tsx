@@ -16,7 +16,6 @@ export default function ProjectsPage() {
     <Container>
       <div className="space-y-10 py-14 md:py-20">
         <PageHeader
-          eyebrow="Case Studies"
           title="Projects"
           description="A curated set of backend engineering projects focused on architecture, reliability, and outcomes."
         />

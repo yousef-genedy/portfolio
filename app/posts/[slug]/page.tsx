@@ -5,9 +5,9 @@ import MdxArticle from "@/components/MdxArticle";
 import PageHeader from "@/components/PageHeader";
 import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { renderMdx } from "@/lib/content/mdx";
-import { getNoteBySlug, getNotes } from "@/lib/content/queries";
+import { getPostBySlug, getPosts } from "@/lib/content/queries";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.netlify.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netlify.app";
 
 type PostPageProps = {
   params: Promise<{
@@ -16,14 +16,14 @@ type PostPageProps = {
 };
 
 export async function generateStaticParams() {
-  return getNotes().map((post) => ({
+  return getPosts().map((post) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getNoteBySlug(slug);
+  const post = getPostBySlug(slug);
 
   if (!post) {
     return {};
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
 export default async function PostDetailPage({ params }: PostPageProps) {
   const { slug } = await params;
-  const post = getNoteBySlug(slug);
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -57,10 +57,9 @@ export default async function PostDetailPage({ params }: PostPageProps) {
   return (
     <Container>
       <div className="space-y-10 py-14 md:py-20">
-        <PageHeader eyebrow="Post" title={post.title} description={post.summary} />
+        <PageHeader title={post.title} description={post.summary} />
         <MdxArticle>{body}</MdxArticle>
       </div>
     </Container>
   );
 }
-

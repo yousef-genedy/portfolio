@@ -18,7 +18,7 @@ export default async function AboutPage() {
   return (
     <Container>
       <div className="space-y-12 py-14 md:py-20">
-        <PageHeader title={about.title} description={about.summary} eyebrow="Profile" />
+        <PageHeader title={about.title} description={about.summary} />
         <MdxArticle>{body}</MdxArticle>
       </div>
     </Container>

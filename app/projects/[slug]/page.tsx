@@ -7,7 +7,7 @@ import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { renderMdx } from "@/lib/content/mdx";
 import { getProjectBySlug, getProjects } from "@/lib/content/queries";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.netlify.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netlify.app";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -57,7 +57,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   return (
     <Container>
       <div className="space-y-10 py-14 md:py-20">
-        <PageHeader eyebrow="Project" title={project.title} description={project.summary} />
+        <PageHeader title={project.title} description={project.summary} />
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span key={tech} className="rounded-full border border-zinc-700 px-2.5 py-1 text-xs text-zinc-400">

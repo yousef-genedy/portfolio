@@ -16,7 +16,6 @@ export default function OssPage() {
     <Container>
       <div className="space-y-10 py-14 md:py-20">
         <PageHeader
-          eyebrow="Open Source"
           title="OSS Contributions"
           description="Work across Joplin and community contributions with an emphasis on practical impact."
         />
