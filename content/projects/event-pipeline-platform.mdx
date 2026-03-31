@@ -1,0 +1,31 @@
+---
+title: "Event Pipeline Platform"
+summary: "A resilient ingestion and processing pipeline for high-volume product events."
+date: "2026-01-20"
+tags: ["Node.js", "Kafka", "PostgreSQL", "Redis", "Observability"]
+order: 1
+featured: true
+status: "Shipped"
+stack: ["TypeScript", "Node.js", "Kafka", "PostgreSQL", "Redis"]
+impact: "Improved processing throughput by 3.5x while reducing end-to-end latency by 42%."
+company: "Product Platform"
+role: "Backend Engineer"
+links:
+  github: "https://github.com/your-username/event-pipeline-platform"
+---
+
+## Context
+
+The previous event path struggled during traffic spikes and had weak replay tooling.
+
+## What I Built
+
+- Partition-aware ingestion workers
+- Idempotent processors with retry queues
+- Redis-backed deduplication for burst protection
+- Dead-letter and replay flow with operator controls
+
+## Outcome
+
+The platform became stable under sustained burst traffic and gave the team faster incident recovery through clear operational dashboards.
+

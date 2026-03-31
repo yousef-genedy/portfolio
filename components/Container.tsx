@@ -1,6 +1,5 @@
 import type { PropsWithChildren } from "react";
 
 export default function Container({ children }: PropsWithChildren) {
-  return <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">{children}</div>;
+  return <div className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-10">{children}</div>;
 }
-

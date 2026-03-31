@@ -1,0 +1,20 @@
+---
+title: "Redis Streams for Async Workflows"
+summary: "When Redis Streams are the right fit for low-latency event pipelines."
+date: "2026-03-05"
+tags: ["Redis", "Messaging", "Async"]
+status: "Draft"
+---
+
+Redis Streams can be a great middle ground between simple queues and heavier brokers.
+
+## Use Cases
+
+- Low-latency event fan-in
+- Short-lived workflow coordination
+- Stream consumers that need replay support
+
+## Caveat
+
+Choose retention and consumer-group strategy early. Operational behavior depends heavily on it.
+

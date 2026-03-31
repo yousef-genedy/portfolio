@@ -1,23 +1,28 @@
-import type { Project } from "@/data/portfolio";
+import Link from "next/link";
+import type { ProjectEntry } from "@/lib/content/types";
 
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectEntry;
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-	<article className="rounded-xl border border-zinc-200 bg-white p-5 transition-shadow hover:shadow-sm">
-	  <div className="space-y-3">
-		<h3 className="text-lg font-semibold text-zinc-900">{project.title}</h3>
-		<p className="text-sm leading-6 text-zinc-600">{project.description}</p>
-		<p className="text-sm text-zinc-700">
-		  <span className="font-medium text-zinc-900">Impact:</span> {project.impact}
+	<article className="rounded-2xl border border-zinc-800 bg-zinc-900/65 p-5 transition-all hover:-translate-y-0.5 hover:border-zinc-700 hover:bg-zinc-900">
+	  <div className="space-y-4">
+		<div className="space-y-2">
+		  <h3 className="text-lg font-semibold text-zinc-100">{project.title}</h3>
+		  <p className="text-sm leading-6 text-zinc-300">{project.summary}</p>
+		</div>
+
+		<p className="text-sm text-zinc-300">
+		  <span className="font-medium text-zinc-100">Impact:</span> {project.impact}
 		</p>
+
 		<ul className="flex flex-wrap gap-2" aria-label="Project technology stack">
-		  {project.techStack.map((tech) => (
+		  {project.stack.map((tech) => (
 			<li
 			  key={tech}
-			  className="rounded-full border border-zinc-300 px-2.5 py-1 text-xs text-zinc-700"
+			  className="rounded-full border border-zinc-700 bg-zinc-950/80 px-2.5 py-1 text-xs text-zinc-300"
 			>
 			  {tech}
 			</li>
@@ -25,31 +30,21 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 		</ul>
 	  </div>
 
-	  {(project.githubUrl || project.demoUrl) ? (
-		<div className="mt-4 flex gap-3 text-sm">
-		  {project.githubUrl ? (
-			<a
-			  href={project.githubUrl}
-			  target="_blank"
-			  rel="noreferrer"
-			  className="text-zinc-700 underline decoration-zinc-400 underline-offset-4 transition-colors hover:text-zinc-900"
-			>
-			  GitHub
-			</a>
-		  ) : null}
-		  {project.demoUrl ? (
-			<a
-			  href={project.demoUrl}
-			  target="_blank"
-			  rel="noreferrer"
-			  className="text-zinc-700 underline decoration-zinc-400 underline-offset-4 transition-colors hover:text-zinc-900"
-			>
-			  Demo
-			</a>
-		  ) : null}
-		</div>
-	  ) : null}
+	  <div className="mt-5 flex flex-wrap gap-4 text-sm">
+		<Link href={`/projects/${project.slug}`} className="text-zinc-200 transition-colors hover:text-sky-300">
+		  Read case study
+		</Link>
+		{project.links?.github ? (
+		  <Link href={project.links.github} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-200">
+			GitHub
+		  </Link>
+		) : null}
+		{project.links?.demo ? (
+		  <Link href={project.links.demo} target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-200">
+			Demo
+		  </Link>
+		) : null}
+	  </div>
 	</article>
   );
 }
-
