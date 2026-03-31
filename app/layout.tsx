@@ -20,8 +20,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netli
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${siteConfig.name} | Backend Engineer`,
-    template: `%s | ${siteConfig.name}`,
+    default: `${siteConfig.name} - Software Engineer`,
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   openGraph: {
