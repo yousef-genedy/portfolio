@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import type { HeroFact } from "@/data/site";
 
 type HeroFactsPanelProps = {
@@ -8,50 +5,70 @@ type HeroFactsPanelProps = {
 };
 
 export default function HeroFactsPanel({ facts }: HeroFactsPanelProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [mission, stack, interests] = facts;
 
-  useEffect(() => {
-    if (facts.length <= 1) {
-      return;
-    }
-
-    const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % facts.length);
-    }, 3200);
-
-    return () => window.clearInterval(interval);
-  }, [facts.length]);
+  if (!mission) {
+    return null;
+  }
 
   return (
-    <div className="relative isolate overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6 shadow-[0_0_50px_-28px_rgba(125,211,252,0.4)]">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,0.2),transparent_42%),radial-gradient(circle_at_85%_90%,rgba(59,130,246,0.16),transparent_35%)]" />
-      <div className="relative space-y-5">
-        <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Profile signal board</p>
+    <aside className="group overflow-hidden rounded-2xl border border-zinc-900 bg-zinc-950/95 shadow-[0_0_0_1px_rgba(255,255,255,0.02)_inset] transition-all duration-300 hover:-translate-y-0.5 hover:border-zinc-700/90">
+      <div className="border-b border-zinc-900 px-6 py-4">
+        <p className="text-xs uppercase tracking-[0.24em] text-zinc-500">Engineering Snapshot</p>
+      </div>
 
-        <div className="rounded-xl border border-zinc-800/90 bg-zinc-950/75 p-4">
-          <p className="text-xs uppercase tracking-[0.18em] text-sky-300/80">{facts[activeIndex]?.title}</p>
-          <p className="mt-2 text-sm leading-7 text-zinc-200 transition-opacity duration-500">
-            {facts[activeIndex]?.detail}
-          </p>
+      <div className="space-y-4 p-6">
+        <div className="relative rounded-xl border border-zinc-700/90 bg-black p-5 shadow-[0_0_28px_-22px_rgba(56,189,248,0.65)]">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(56,189,248,0.1),transparent_40%)]" />
+          <div className="flex items-center gap-2.5">
+            <span className="dot-pulse h-2 w-2 rounded-full bg-[#38bdf8]" />
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-zinc-400">{mission.title}</p>
+          </div>
+          <p className="relative mt-3 text-base leading-7 text-zinc-100">{mission.detail}</p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          {facts.map((fact, index) => (
-            <button
-              type="button"
-              key={fact.title}
-              onClick={() => setActiveIndex(index)}
-              className={`rounded-lg border px-3 py-2 text-left transition-all duration-300 ${
-                index === activeIndex
-                  ? "border-sky-400/60 bg-sky-400/10 text-zinc-100"
-                  : "border-zinc-800 bg-zinc-950/60 text-zinc-400 hover:border-zinc-700 hover:text-zinc-300"
-              }`}
-            >
-              <span className="line-clamp-1 text-xs font-medium tracking-wide">{fact.title}</span>
-            </button>
-          ))}
+        <div className="grid gap-3 sm:auto-rows-fr sm:grid-cols-2">
+          <div className="h-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-zinc-400">
+              {stack?.title ?? "Stack"}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {(stack?.detail ?? "Spring Boot, Node.js, PostgreSQL, Redis Streams, OpenSearch")
+                .split(",")
+                .map((item) => item.trim())
+                .filter(Boolean)
+                .map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-zinc-700 bg-black px-2.5 py-1 text-xs text-zinc-200"
+                  >
+                    {item}
+                  </span>
+                ))}
+            </div>
+          </div>
+
+          <div className="h-full rounded-lg border border-zinc-800 bg-zinc-950 px-4 py-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-zinc-400">
+              {interests?.title ?? "Interests"}
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {(interests?.detail ?? "Distributed architecture, observability, and performance engineering")
+                .split(",")
+                .map((item) => item.trim())
+                .filter(Boolean)
+                .map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-zinc-700 bg-black px-2.5 py-1 text-xs text-zinc-200"
+                  >
+                    {item}
+                  </span>
+                ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </aside>
   );
 }
