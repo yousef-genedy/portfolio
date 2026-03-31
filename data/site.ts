@@ -13,11 +13,6 @@ export type HeroFact = {
   detail: string;
 };
 
-export type HighlightItem = {
-  label: string;
-  value: string;
-};
-
 export type HeroSocialLink = {
   label: string;
   href: string;
@@ -25,11 +20,11 @@ export type HeroSocialLink = {
 
 export const siteConfig = {
   name: "Yousef Genedy",
-  brand: "//YG",
-  greeting: "Hi There",
+  brand: "YG",
+  greeting: "Hey There",
   title: "Software Engineer",
   description:
-    "I build backend systems focused on scalable APIs, distributed services, and performance-driven architecture with practical engineering depth.",
+    "I build systems, explore ideas, and enjoy learning how things work from the inside out.",
   navLinks: [
     { label: "About", href: "/about" },
     { label: "Experience", href: "/experience" },
@@ -38,27 +33,32 @@ export const siteConfig = {
     { label: "Projects", href: "/projects" },
   ] as NavLink[],
   heroSocialLinks: [
-    { label: "GitHub", href: "https://github.com/your-username" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle" },
-    { label: "Email", href: "mailto:you@example.com" },
+    { label: "GitHub", href: "https://github.com/yousef-genedy" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/yousef-genedy/" },
+    { label: "Email", href: "mailto:youssef.ahmmed29@gmail.com" },
+    {
+      label: "CV",
+      href: "https://drive.google.com/file/d/1I8Hg-o94l-27UtGorKUbXuC4RkWj4954/view?usp=sharing",
+    },
   ] as HeroSocialLink[],
   footerLinks: [
-    { label: "GitHub", href: "https://github.com/your-username" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle" },
-    { label: "CV", href: "https://example.com/cv.pdf" },
-    { label: "Email", href: "mailto:you@example.com" },
+    { label: "GitHub", href: "https://github.com/yousef-genedy" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/yousef-genedy/" },
+    { label: "Email", href: "mailto:youssef.ahmmed29@gmail.com" },
+    {
+      label: "CV",
+      href: "https://drive.google.com/file/d/1I8Hg-o94l-27UtGorKUbXuC4RkWj4954/view?usp=sharing",
+    },
   ] as FooterLink[],
   heroFacts: [
-    { title: "Current Role", detail: "Backend Engineer at e& Egypt" },
-    { title: "Core Stack", detail: "Spring Boot, Node.js, PostgreSQL, Redis" },
-    { title: "Systems Focus", detail: "Distributed systems, async pipelines, observability" },
-    { title: "Open Source", detail: "Contributing to Joplin and backend tooling" },
-    { title: "Now", detail: "Exploring AI/LLM integrations for product workflows" },
+    { title: "Current Mission", detail: "Exploring open source software and building around AI agentic trends and workflows." },
+    {
+      title: "Stack",
+      detail: "Java / Spring Boot, TypeScript / Node.js, Python, Go / Gin, PostgreSQL, Redis, OpenSearch",
+    },
+    {
+      title: "Interests",
+      detail: "Distributed systems, System design, Low level programming",
+    },
   ] as HeroFact[],
-  homeHighlights: [
-    { label: "Current focus", value: "Scalable backend architecture" },
-    { label: "Preferred style", value: "Reliable APIs and clean system boundaries" },
-    { label: "Open source", value: "Joplin contributions and issue triage" },
-  ] as HighlightItem[],
 };
-
