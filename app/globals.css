@@ -3,6 +3,8 @@
 :root {
   --background: #000000;
   --foreground: #f4f4f5;
+  --font-space-grotesk: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-geist-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
