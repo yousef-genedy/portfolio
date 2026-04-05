@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
+import React from "react";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
