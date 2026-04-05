@@ -1,31 +1,29 @@
 import type { Metadata } from "next";
 import Container from "@/components/Container";
-import OssCard from "@/components/OssCard";
 import PageHeader from "@/components/PageHeader";
-import { getOssEntries } from "@/lib/content/queries";
+import OssMetricsStrip from "@/components/oss/OssMetricsStrip";
+import OssPrExplorer from "@/components/oss/OssPrExplorer";
+import OssRepositoryGrid from "@/components/oss/OssRepositoryGrid";
+import { ossRepositories, ossSummaryMetrics, pullRequests } from "@/data/oss";
 
 export const metadata: Metadata = {
-  title: "OSS",
-  description: "Open-source contributions and collaboration highlights.",
+  title: "Open Source Contributions",
+  description: "A collection of open-source contributions, pull requests, and repository work.",
 };
 
 export default function OssPage() {
-  const entries = getOssEntries();
-
   return (
     <Container>
-      <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
+      <div className="space-y-12 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader
-          title="OSS Contributions"
-          description="Work across Joplin and community contributions with an emphasis on practical impact."
+          title="Open Source Contributions"
+          description="A collection of open-source contributions, pull requests, and repository work."
         />
-        <div className="grid gap-4 md:grid-cols-2">
-          {entries.map((entry) => (
-            <OssCard key={entry.slug} entry={entry} />
-          ))}
-        </div>
+
+        <OssMetricsStrip metrics={ossSummaryMetrics} />
+        <OssRepositoryGrid repositories={ossRepositories} />
+        <OssPrExplorer pullRequests={pullRequests} />
       </div>
     </Container>
   );
 }
-
