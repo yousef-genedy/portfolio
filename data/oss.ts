@@ -26,7 +26,7 @@ export type PullRequestEntry = {
   href: string;
 };
 
-function toSortableTimestamp(date?: string) {
+function toTimestamp(date?: string): number {
   if (!date) {
     return 0;
   }
@@ -37,7 +37,7 @@ function toSortableTimestamp(date?: string) {
 
 export const ossRepositories: OssRepo[] = [
   {
-    name: "laurent22/joplin",
+    name: "Joplin",
     description:
       "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
     primaryLanguage: "TypeScript",
@@ -50,7 +50,7 @@ const pullRequestEntries: PullRequestEntry[] = [
   {
     number: 14574,
     title: "Start sync when app opens or resumes",
-    repository: "laurent22/joplin",
+    repository: "Joplin",
     status: "merged",
     summary: "Triggers synchronization automatically on launch and when the app regains focus.",
     date: "2026-03-05",
@@ -60,7 +60,7 @@ const pullRequestEntries: PullRequestEntry[] = [
   {
     number: 14360,
     title: "Make notebook search accent-insensitive in GotoAnything",
-    repository: "laurent22/joplin",
+    repository: "Joplin",
     status: "merged",
     summary: "Improves notebook lookup by matching accented and non-accented query text consistently.",
     date: "2026-02-16",
@@ -70,7 +70,7 @@ const pullRequestEntries: PullRequestEntry[] = [
   {
     number: 14818,
     title: "Implement note attachments management screen",
-    repository: "laurent22/joplin",
+    repository: "Joplin",
     status: "merged",
     summary: "Adds a dedicated UI to view, manage, and clean up note-related attachments.",
     date: "2026-03-18",
@@ -80,7 +80,7 @@ const pullRequestEntries: PullRequestEntry[] = [
   {
     number: 14429,
     title: "E2EE setup dialog theme and cancel validation",
-    repository: "laurent22/joplin",
+    repository: "Joplin",
     status: "closed",
     summary: "Refines E2EE setup dialog theming and improves cancel-flow validation behavior.",
     date: "2026-02-23",
@@ -90,19 +90,19 @@ const pullRequestEntries: PullRequestEntry[] = [
 ];
 
 export const pullRequests: PullRequestEntry[] = [...pullRequestEntries].sort((a, b) => {
-  const dateDifference = toSortableTimestamp(b.date) - toSortableTimestamp(a.date);
+  const diff = toTimestamp(b.date) - toTimestamp(a.date);
 
-  if (dateDifference !== 0) {
-    return dateDifference;
+  if (diff !== 0) {
+    return diff;
   }
 
   return b.number - a.number;
 });
 
 export const ossSummaryMetrics: OssMetric[] = (() => {
-  const merged = pullRequests.filter((entry) => entry.status === "merged").length;
-  const open = pullRequests.filter((entry) => entry.status === "open").length;
-  const closed = pullRequests.filter((entry) => entry.status === "closed").length;
+  const merged: number = pullRequests.filter((entry: PullRequestEntry): boolean => entry.status === "merged").length;
+  const open: number = pullRequests.filter((entry: PullRequestEntry): boolean => entry.status === "open").length;
+  const closed: number = pullRequests.filter((entry: PullRequestEntry): boolean => entry.status === "closed").length;
 
   return [
     { label: "Repositories", value: String(ossRepositories.length) },
