@@ -26,6 +26,10 @@ export type ProjectEntry = BaseEntry & {
 
 export type PostEntry = BaseEntry & {
   collection: "posts";
+  published: boolean;
+  readingTime: string;
+  readingTimeMinutes: number;
+  formattedDate: string;
 };
 
 export type ExperienceEntry = BaseEntry & {

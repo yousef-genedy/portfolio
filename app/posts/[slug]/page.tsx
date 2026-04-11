@@ -58,6 +58,23 @@ export default async function PostDetailPage({ params }: PostPageProps) {
     <Container>
       <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader title={post.title} description={post.summary} />
+
+        <div className="space-y-4">
+          <p className="text-sm text-zinc-400">
+            {post.formattedDate} <span className="mx-1 text-zinc-700">|</span> {post.readingTime}
+          </p>
+
+          {post.tags.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span key={tag} className="rounded-full border border-zinc-700 bg-zinc-950/80 px-2.5 py-1 text-xs text-zinc-300">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
         <MdxArticle>{body}</MdxArticle>
       </div>
     </Container>

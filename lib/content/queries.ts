@@ -11,6 +11,7 @@ import type {
 } from "@/lib/content/types";
 
 const CONTENT_ROOT = path.join(process.cwd(), "content");
+const WORDS_PER_MINUTE = 220;
 
 function readFileContent(filePath: string) {
   const raw = fs.readFileSync(filePath, "utf8");
@@ -47,6 +48,41 @@ function sortByOrderAndDate<T extends { order?: number; date?: string }>(entries
 
     return dateB - dateA;
   });
+}
+
+function formatDateForUi(date?: string) {
+  if (!date) {
+    return "Draft";
+  }
+
+  const timestamp = new Date(date).getTime();
+
+  if (Number.isNaN(timestamp)) {
+    return "Draft";
+  }
+
+  return new Date(timestamp).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function calculateReadingTimeMinutes(content: string, fallback: unknown) {
+  if (typeof fallback === "number" && Number.isFinite(fallback) && fallback > 0) {
+    return Math.round(fallback);
+  }
+
+  if (typeof fallback === "string") {
+    const parsed = Number(fallback);
+
+    if (Number.isFinite(parsed) && parsed > 0) {
+      return Math.round(parsed);
+    }
+  }
+
+  const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(wordCount / WORDS_PER_MINUTE));
 }
 
 export function getAboutPage(): AboutEntry {
@@ -113,22 +149,38 @@ export function getPosts(): PostEntry[] {
   const entries = getCollectionFileNames("posts").map((fileName) => {
     const filePath = path.join(CONTENT_ROOT, "posts", fileName);
     const { data, content } = readFileContent(filePath);
+    const status = data.status ? String(data.status) : undefined;
+    const date = data.date ? String(data.date) : undefined;
+    const readingTimeMinutes = calculateReadingTimeMinutes(content, (data as { readingTime?: unknown }).readingTime);
+    const published =
+      typeof data.published === "boolean"
+        ? data.published
+        : status
+          ? status.toLowerCase() !== "draft"
+          : true;
 
     return {
       collection: "posts" as const,
-      slug: extractSlug(fileName),
+      slug:
+        typeof data.slug === "string" && data.slug.trim().length > 0
+          ? data.slug.trim()
+          : extractSlug(fileName),
       body: content,
       title: String(data.title ?? extractSlug(fileName)),
       summary: String(data.summary ?? ""),
       tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
-      date: data.date ? String(data.date) : undefined,
+      date,
       order: typeof data.order === "number" ? data.order : undefined,
       featured: Boolean(data.featured),
-      status: data.status ? String(data.status) : undefined,
+      status,
+      published,
+      readingTimeMinutes,
+      readingTime: `${readingTimeMinutes} min read`,
+      formattedDate: formatDateForUi(date),
     };
   });
 
-  return sortByOrderAndDate(entries);
+  return sortByOrderAndDate(entries).filter((post) => post.published);
 }
 
 export function getPostBySlug(slug: string) {
