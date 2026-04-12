@@ -6,7 +6,7 @@ import { getProjects } from "@/lib/content/queries";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Backend project case studies with architecture and impact details.",
+  description: "A collection of projects across backend systems, tools, and practical software built with a focus on clarity and reliability.",
 };
 
 export default function ProjectsPage() {
@@ -17,9 +17,10 @@ export default function ProjectsPage() {
       <div className="space-y-10 pb-14 pt-8 md:pb-20 md:pt-10">
         <PageHeader
           title="Projects"
-          description="A curated set of backend engineering projects focused on architecture, reliability, and outcomes."
+          description="A collection of projects across backend systems, tools, and practical software built with a focus on clarity and reliability."
+          descriptionClassName="xl:max-w-none xl:whitespace-nowrap"
         />
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 md:grid-cols-2 2xl:grid-cols-3">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
@@ -28,4 +29,3 @@ export default function ProjectsPage() {
     </Container>
   );
 }
-
