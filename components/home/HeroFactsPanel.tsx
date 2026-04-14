@@ -1,4 +1,5 @@
-import type { HeroFact } from "@/data/site";
+import type { HeroFact } from "@/lib/content/types";
+import { getTechBadgeClasses, getTechIcon, getTechLogo, resolveTechIconKey } from "@/components/experience/iconMap";
 
 type HeroFactsPanelProps = {
   facts: HeroFact[];
@@ -6,6 +7,10 @@ type HeroFactsPanelProps = {
 
 export default function HeroFactsPanel({ facts }: HeroFactsPanelProps) {
   const [mission, stack, interests] = facts;
+  const stackItems = (stack?.detail ?? "Spring Boot, Node.js, PostgreSQL, Redis, OpenSearch")
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
   if (!mission) {
     return null;
@@ -33,18 +38,33 @@ export default function HeroFactsPanel({ facts }: HeroFactsPanelProps) {
               {stack?.title ?? "Stack"}
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
-              {(stack?.detail ?? "Spring Boot, Node.js, PostgreSQL, Redis Streams, OpenSearch")
-                .split(",")
-                .map((item) => item.trim())
-                .filter(Boolean)
-                .map((item) => (
+              {stackItems.map((item) => {
+                const iconKey = resolveTechIconKey(item);
+                const accent = getTechBadgeClasses(iconKey);
+                const icon = getTechIcon(iconKey);
+                const logo = getTechLogo(iconKey);
+
+                return (
                   <span
                     key={item}
-                    className="rounded-full border border-zinc-700 bg-black px-2.5 py-1 text-xs text-zinc-200"
+                    className={`inline-flex items-center gap-2 rounded-full border bg-black px-2.5 py-1 text-xs text-zinc-200 ${accent.border}`}
                   >
-                    {item}
+                    {icon || logo ? (
+                      <span
+                        className={`inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] ${accent.icon}`}
+                      >
+                        {logo ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={logo.src} alt={logo.alt} width={12} height={12} loading="lazy" decoding="async" />
+                        ) : (
+                          icon
+                        )}
+                      </span>
+                    ) : null}
+                    <span>{item}</span>
                   </span>
-                ))}
+                );
+              })}
             </div>
           </div>
 
