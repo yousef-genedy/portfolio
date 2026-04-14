@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { AchievementType } from "@/data/experience";
+import type { AchievementType } from "@/lib/content/types";
 
 const iconClass = "h-3.5 w-3.5";
 
@@ -161,6 +161,8 @@ export function getTechIcon(icon?: string): ReactNode {
 	  );
 	case "typescript":
 	  return <span className="text-[9px] font-bold">TS</span>;
+	case "java":
+	  return <span className="text-[9px] font-bold">Java</span>;
 	case "c":
 	  return <span className="text-[9px] font-bold">C</span>;
 	case "cli":
@@ -319,6 +321,8 @@ export function getTechLogo(icon?: string): TechLogoMeta | null {
 	  return { src: "https://cdn.simpleicons.org/docker/2496ED", alt: "Docker" };
 	case "typescript":
 	  return { src: "https://cdn.simpleicons.org/typescript/3178C6", alt: "TypeScript" };
+	case "java":
+	  return { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", alt: "Java" };
 	case "nestjs":
 	  return { src: "https://cdn.simpleicons.org/nestjs/E0234E", alt: "NestJS" };
 	case "typeorm":
@@ -378,6 +382,8 @@ export function getTechBadgeClasses(icon?: string) {
 	  return { border: "border-cyan-500/40", icon: "text-cyan-300 bg-cyan-500/15" };
 	case "typescript":
 	  return { border: "border-blue-500/40", icon: "text-blue-200 bg-blue-500/20" };
+	case "java":
+	  return { border: "border-amber-500/40", icon: "text-amber-200 bg-amber-500/15" };
 	case "c":
 	  return { border: "border-blue-500/40", icon: "text-blue-200 bg-blue-500/20" };
 	case "cli":
@@ -482,6 +488,9 @@ export function resolveTechIconKey(tech: string) {
 	case "typescript":
 	case "ts":
 	  return "typescript";
+	case "java":
+	case "openjdk":
+	  return "java";
 	case "nestjs":
 	case "nest.js":
 	  return "nestjs";
