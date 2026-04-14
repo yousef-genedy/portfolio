@@ -38,7 +38,7 @@ export const siteConfig = {
     { label: "Email", href: "mailto:youssef.ahmmed29@gmail.com" },
     {
       label: "CV",
-      href: "https://drive.google.com/file/d/1I8Hg-o94l-27UtGorKUbXuC4RkWj4954/view?usp=sharing",
+      href: "/cv",
     },
   ] as HeroSocialLink[],
   footerLinks: [
@@ -47,18 +47,18 @@ export const siteConfig = {
     { label: "Email", href: "mailto:youssef.ahmmed29@gmail.com" },
     {
       label: "CV",
-      href: "https://drive.google.com/file/d/1I8Hg-o94l-27UtGorKUbXuC4RkWj4954/view?usp=sharing",
+      href: "/cv",
     },
   ] as FooterLink[],
   heroFacts: [
     { title: "Current Mission", detail: "Exploring open source software and building around AI agentic trends and workflows." },
     {
       title: "Stack",
-      detail: "Java / Spring Boot, TypeScript / Node.js, Python, Go / Gin, PostgreSQL, Redis, OpenSearch",
+      detail: "Java, Spring Boot, TypeScript, Node.js, Python, Go, PostgreSQL, Redis",
     },
     {
       title: "Interests",
-      detail: "Distributed systems, System design, Low level programming",
+      detail: "Distributed systems, System design, Low level programming, Cloud, Agentic AI",
     },
   ] as HeroFact[],
 };

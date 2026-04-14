@@ -1,7 +1,8 @@
 import Link from "next/link";
-import Container from "@/components/Container";
-import HeroFactsPanel from "@/components/HeroFactsPanel";
-import { siteConfig } from "@/data/site";
+import Container from "@/components/layout/Container";
+import HeroFactsPanel from "@/components/home/HeroFactsPanel";
+import { getHomePageData } from "@/lib/content/queries";
+import type { HeroSocialLink } from "@/lib/content/types";
 
 function SocialIcon({ label }: { label: string }) {
   switch (label) {
@@ -81,39 +82,46 @@ function SocialIcon({ label }: { label: string }) {
 }
 
 export default function Home() {
+  const home = getHomePageData();
+  const [primaryCta, secondaryCta] = home.ctas;
+
   return (
     <div className="hero-surface bg-black">
       <Container>
         <section className="grid gap-10 pb-10 pt-14 md:grid-cols-[1.15fr_0.85fr] md:items-center md:py-24">
           <div className="min-w-0 space-y-8">
             <p className="reveal-enter text-sm font-medium uppercase tracking-[0.2em] text-zinc-500">
-              {siteConfig.greeting}, I&apos;M
+              {home.greeting}, I&apos;M
             </p>
             <div className="reveal-enter reveal-delay-1 space-y-4">
               <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-zinc-100 sm:text-6xl md:text-7xl">
-                {siteConfig.name}
+                {home.name}
               </h1>
-              <p className="text-xl font-medium text-zinc-200 sm:text-2xl">{siteConfig.title}</p>
-              <p className="max-w-2xl leading-8 text-zinc-300/90">{siteConfig.description}</p>
+              <p className="text-xl font-medium text-zinc-200 sm:text-2xl">{home.title}</p>
+              <p className="max-w-2xl leading-8 text-zinc-300/90">{home.description}</p>
             </div>
 
             <div className="reveal-enter reveal-delay-2 flex flex-wrap items-center gap-3">
-              <Link
-                href="/oss"
-                className="rounded-lg border border-sky-400/40 bg-sky-500 px-4 py-2 text-sm font-semibold text-zinc-950 transition-all hover:-translate-y-0.5 hover:bg-sky-300"
-              >
-                Explore OSS
-              </Link>
-              <Link
-                href="/projects"
-                className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-200 transition-all hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-900/70"
-              >
-                View Projects
-              </Link>
+              {primaryCta ? (
+                <Link
+                  href={primaryCta.href}
+                  className="rounded-lg border border-sky-400/40 bg-sky-500 px-4 py-2 text-sm font-semibold text-zinc-950 transition-all hover:-translate-y-0.5 hover:bg-sky-300"
+                >
+                  {primaryCta.label}
+                </Link>
+              ) : null}
+              {secondaryCta ? (
+                <Link
+                  href={secondaryCta.href}
+                  className="rounded-lg border border-zinc-700 px-4 py-2 text-sm font-semibold text-zinc-200 transition-all hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-900/70"
+                >
+                  {secondaryCta.label}
+                </Link>
+              ) : null}
             </div>
 
             <div className="reveal-enter reveal-delay-3 flex flex-wrap items-center gap-3 text-sm text-zinc-300">
-              {siteConfig.heroSocialLinks.map((link) => (
+              {home.socialLinks.map((link: HeroSocialLink) => (
                 <Link
                   key={link.label}
                   href={link.href}
@@ -133,7 +141,7 @@ export default function Home() {
           </div>
 
           <div className="reveal-enter reveal-delay-2 min-w-0">
-            <HeroFactsPanel facts={siteConfig.heroFacts} />
+            <HeroFactsPanel facts={home.facts} />
           </div>
         </section>
 
