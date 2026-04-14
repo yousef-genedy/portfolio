@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
-import PageHeader from "@/components/PageHeader";
-import ProjectCard from "@/components/ProjectCard";
+import Container from "@/components/layout/Container";
+import PageHeader from "@/components/ui/PageHeader";
+import ProjectCard from "@/components/projects/ProjectCard";
 import { getProjects } from "@/lib/content/queries";
 
 export const metadata: Metadata = {

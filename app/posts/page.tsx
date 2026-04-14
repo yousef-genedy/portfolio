@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
-import PostCard from "@/components/PostCard";
-import PageHeader from "@/components/PageHeader";
+import Container from "@/components/layout/Container";
+import PostCard from "@/components/posts/PostCard";
+import PageHeader from "@/components/ui/PageHeader";
 import { getPosts } from "@/lib/content/queries";
 
 export const metadata: Metadata = {

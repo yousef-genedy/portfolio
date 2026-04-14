@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Space_Grotesk } from "next/font/google";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/layout/Footer";
+import Navbar from "@/components/layout/Navbar";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 import React from "react";
@@ -20,13 +20,18 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netli
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   title: {
     default: `${siteConfig.name} - Software Engineer`,
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
   openGraph: {
-    title: `${siteConfig.name} | Backend Engineer`,
+    title: `${siteConfig.name} | Software Engineer`,
     description: siteConfig.description,
     url: siteUrl,
     siteName: `${siteConfig.name} Portfolio`,
@@ -34,7 +39,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Backend Engineer`,
+    title: `${siteConfig.name} | Software Engineer`,
     description: siteConfig.description,
   },
 };

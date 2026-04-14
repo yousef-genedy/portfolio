@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Container from "@/components/Container";
-import MdxArticle from "@/components/MdxArticle";
-import PageHeader from "@/components/PageHeader";
+import Container from "@/components/layout/Container";
+import MdxArticle from "@/components/mdx/MdxArticle";
+import PageHeader from "@/components/ui/PageHeader";
 import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { renderMdx } from "@/lib/content/mdx";
 import { getAboutPage } from "@/lib/content/queries";

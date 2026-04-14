@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Container from "@/components/Container";
-import MdxArticle from "@/components/MdxArticle";
-import PageHeader from "@/components/PageHeader";
+import Container from "@/components/layout/Container";
+import MdxArticle from "@/components/mdx/MdxArticle";
+import PageHeader from "@/components/ui/PageHeader";
 import { getTechBadgeClasses, getTechIcon, getTechLogo, resolveTechIconKey } from "@/components/experience/iconMap";
 import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { renderMdx } from "@/lib/content/mdx";
