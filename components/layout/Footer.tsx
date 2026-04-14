@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Container from "@/components/Container";
+import Container from "@/components/layout/Container";
 import { siteConfig } from "@/data/site";
 
 export default function Footer() {

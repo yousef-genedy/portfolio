@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import Container from "@/components/Container";
+import Container from "@/components/layout/Container";
 import { siteConfig } from "@/data/site";
 
 export default function Navbar() {
@@ -71,7 +71,7 @@ export default function Navbar() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link
-            href="/"
+            href="/public"
             onMouseEnter={startBrandScramble}
             onMouseLeave={resetBrandScramble}
             className="inline-flex w-[5ch] items-center text-xl font-black tracking-[0.08em] text-sky-300 transition-colors hover:text-sky-200"
