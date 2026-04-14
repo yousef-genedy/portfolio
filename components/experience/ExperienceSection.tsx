@@ -1,4 +1,4 @@
-import type { ExperienceItem } from "@/data/experience";
+import type { ExperienceItem } from "@/lib/content/types";
 import ExperienceTimeline from "@/components/experience/ExperienceTimeline";
 
 type ExperienceSectionProps = {

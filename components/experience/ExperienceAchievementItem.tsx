@@ -1,4 +1,4 @@
-import type { ExperienceAchievement } from "@/data/experience";
+import type { ExperienceAchievement } from "@/lib/content/types";
 import { getAchievementIcon } from "@/components/experience/iconMap";
 
 type ExperienceAchievementItemProps = {

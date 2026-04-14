@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { ExperienceTechnology } from "@/data/experience";
+import type { ExperienceTechnology } from "@/lib/content/types";
 import { getTechBadgeClasses, getTechIcon, getTechLogo } from "@/components/experience/iconMap";
 
 type TechBadgeProps = {

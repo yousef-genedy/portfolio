@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import Section from "@/components/Section";
-import type { PullRequestEntry, PullRequestStatus } from "@/data/oss";
+import Section from "@/components/ui/Section";
+import type { PullRequestEntry, PullRequestStatus } from "@/lib/content/types";
 
 type OssPrExplorerProps = {
   pullRequests: PullRequestEntry[];
@@ -104,7 +104,7 @@ export default function OssPrExplorer({ pullRequests }: OssPrExplorerProps) {
         <div className="space-y-2.5">
           {filteredPullRequests.length === 0 ? (
             <article className="rounded-xl border border-zinc-800 bg-zinc-900/65 p-4 text-sm text-zinc-300">
-              No open pull requests at the moment.
+              No open pull requests yet.
             </article>
           ) : null}
 

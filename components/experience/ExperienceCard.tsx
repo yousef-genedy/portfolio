@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { ExperienceItem } from "@/data/experience";
+import type { ExperienceItem } from "@/lib/content/types";
 import ExperienceAchievementItem from "@/components/experience/ExperienceAchievementItem";
 import TechBadge from "@/components/experience/TechBadge";
 

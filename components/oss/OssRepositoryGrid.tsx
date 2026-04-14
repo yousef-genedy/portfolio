@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Section from "@/components/Section";
-import type { OssRepo } from "@/data/oss";
+import Section from "@/components/ui/Section";
+import type { OssRepo } from "@/lib/content/types";
 
 type OssRepositoryGridProps = {
   repositories: OssRepo[];

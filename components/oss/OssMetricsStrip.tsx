@@ -1,4 +1,4 @@
-import type { OssMetric } from "@/data/oss";
+import type { OssMetric } from "@/lib/content/types";
 
 type OssMetricsStripProps = {
   metrics: OssMetric[];
