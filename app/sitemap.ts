@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPosts, getProjects } from "@/lib/content/queries";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netlify.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.dev";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/about", "/experience", "/oss", "/projects", "/posts", "/cv"];

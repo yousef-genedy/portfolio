@@ -8,7 +8,7 @@ import { mdxComponents } from "@/components/mdx/MdxComponents";
 import { renderMdx } from "@/lib/content/mdx";
 import { getProjectBySlug, getProjects } from "@/lib/content/queries";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.netlify.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://yousef-genedy.dev";
 
 type ProjectPageProps = {
   params: Promise<{
