@@ -24,7 +24,7 @@ export const siteConfig = {
   greeting: "Hey There",
   title: "Software Engineer",
   description:
-    "I build systems, explore ideas, and enjoy learning how things work from the inside out.",
+    "Building systems, exploring ideas, and enjoy learning how things work from the inside out.",
   navLinks: [
     { label: "About", href: "/about" },
     { label: "Experience", href: "/experience" },

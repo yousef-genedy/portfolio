@@ -196,7 +196,7 @@ export function getHomePageContent(): HomePageContent {
       greeting: "Hey There",
       name: "Yousef Genedy",
       title: "Software Engineer",
-      description: "I build systems, explore ideas, and enjoy learning how things work from the inside out.",
+      description: "Building systems, exploring ideas, and enjoy learning how things work from the inside out.",
       facts: [],
       socialLinks: [],
       ctas: [
@@ -219,7 +219,7 @@ export function getHomePageContent(): HomePageContent {
     description:
       typeof data.description === "string"
         ? data.description
-        : "I build systems, explore ideas, and enjoy learning how things work from the inside out.",
+        : "Building systems, exploring ideas, and learning how things work from the inside out.",
     facts,
     socialLinks,
     ctas:
